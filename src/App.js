@@ -1,18 +1,14 @@
 import React from 'react';
-import Styled from 'styled-components';
 import NavBar from './Components/NavBar';
-
-const Container = Styled.div`
-  display: flex;
-  justify-content: center;
-`;
+import Slider from './Components/Slider';
 
 
 function App() {
   return (
-    <Container>
+    <>
       <NavBar />
-    </Container>
+      <Slider />
+    </>
   );
 }
 

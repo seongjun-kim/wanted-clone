@@ -2,6 +2,7 @@ import React from 'react';
 import Styled from 'styled-components';
 
 const Container = Styled.div`   
+    display: flex;
     font-family: sans-serif;
     font-size: 14px;
     line-height: 1.428571;
@@ -13,8 +14,6 @@ const Container = Styled.div`
     width: 100%;
     background-color: #fff;
     box-shadow: 0 1px 0 0 rgba(0,0,0,.1);
-    z-index: 100;
-    position: fixed;
 `
 const MainBar = Styled.div`
     position: relative;
@@ -46,6 +45,7 @@ const Menus = Styled.ul`
     display: flex;
     flex: 1 1;
     justify-content: space-evenly;
+    max-width: 1100px;
 `
 const Menu = Styled.li`
     line-height: 20px;
