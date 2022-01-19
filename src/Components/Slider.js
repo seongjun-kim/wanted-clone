@@ -69,7 +69,6 @@ export default function Slider() {
     useEffect(() => {
         slideRef.current.style.transition = "all 0.5s ease-in-out";
         slideRef.current.style.transform = `translateX(-${currentSlide * 80}%)`;
-        console.log(slideRef.current);
         const interval = setInterval(() => {
             rightSlide();
         }, 3000);
