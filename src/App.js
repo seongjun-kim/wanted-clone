@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Styled from 'styled-components';
 import NavBar from './component/NavBar';
 import Slider from './component/Slider';
@@ -6,9 +6,11 @@ import colors from './lib/colors';
 import Tab from './component/Tab';
 import ClickToEdit from './component/ClickToEdit';
 import Toggle from './component/Toggle';
+import Modal from './component/Modal';
 
 const Container = Styled.div`
   height: 100vh;
+  width: 100vw;
   background-color: ${colors.white};
 `
 const ComponentContainer = Styled.div`
@@ -42,6 +44,10 @@ function App() {
       <ComponentContainer>
         <Label>Toggle</Label>
         <Toggle />
+      </ComponentContainer>
+      <ComponentContainer>
+        <Label>Modal</Label>
+        <Modal>HELLO CODESTATES!</Modal>
       </ComponentContainer>
     </Container>
   );
