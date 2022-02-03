@@ -7,7 +7,7 @@ const Container = Styled.div`
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    width: 100%;
+    height: 80%;
     background-color: ${colors.background};
 `
 const ToggleBox = Styled.button`

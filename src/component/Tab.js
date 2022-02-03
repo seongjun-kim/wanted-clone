@@ -5,7 +5,7 @@ import colors from '../lib/colors';
 const NUM_OF_TABS = 3;
 
 const Container = Styled.div`
-    width: 100%;
+    height: 80%;
     background-color: ${colors.background};
 `
 const TabBar = Styled.div`

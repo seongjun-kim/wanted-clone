@@ -9,24 +9,21 @@ import Toggle from './component/Toggle';
 import Modal from './component/Modal';
 
 const Container = Styled.div`
-  height: 100vh;
-  width: 100vw;
   background-color: ${colors.white};
 `
 const ComponentContainer = Styled.div`
-  display: flex;
   flex-direction: row;
-  height: 200px;
+  height: 250px;
   padding: 10px;
 `
 const Label = Styled.text`
-  display: flex;
+  display: block;
   justifiy-content: center;
   align-items: center;
   font-weight: bold;
-  padding: 10px;
   border: medium dashed ${colors.gray};
-  margin-right: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
 `
 function App() {
   return (

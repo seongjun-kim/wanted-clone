@@ -3,11 +3,11 @@ import Styled from 'styled-components'
 import colors from '../lib/colors';
 
 const Container = Styled.div`
-    display:flex;
+    height: 80%;
+    display: flex;
     flex-direction: column;    
     align-items: center;
     justify-content: center;
-    width: 100%;
     background-color: ${colors.background};
 `
 

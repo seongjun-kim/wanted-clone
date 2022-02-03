@@ -6,11 +6,11 @@ const Container = Styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    height: 80%;
     background-color: ${colors.background}
 `
 const ModalButton = Styled.button`
-    width: 50%;
+    width: 120px;
     height: 50px;
     background-color: ${colors.primary};
     border-radius: 25px;
