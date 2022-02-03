@@ -5,6 +5,7 @@ import Slider from './component/Slider';
 import colors from './lib/colors';
 import Tab from './component/Tab';
 import ClickToEdit from './component/ClickToEdit';
+import Toggle from './component/Toggle';
 
 const Container = Styled.div`
   height: 100vh;
@@ -37,6 +38,10 @@ function App() {
       <ComponentContainer>
         <Label>ClickToEdit</Label>
         <ClickToEdit />
+      </ComponentContainer>
+      <ComponentContainer>
+        <Label>Toggle</Label>
+        <Toggle />
       </ComponentContainer>
     </Container>
   );
