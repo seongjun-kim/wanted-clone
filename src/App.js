@@ -7,6 +7,7 @@ import Tab from "./component/Tab";
 import ClickToEdit from "./component/ClickToEdit";
 import Toggle from "./component/Toggle";
 import Modal from "./component/Modal";
+import Tag from "./component/Tag";
 
 const Container = Styled.div`
   background-color: ${colors.white};
@@ -45,6 +46,10 @@ function App() {
       <ComponentContainer>
         <Label>Modal</Label>
         <Modal>HELLO CODESTATES!</Modal>
+      </ComponentContainer>
+      <ComponentContainer>
+        <Label>Tag</Label>
+        <Tag />
       </ComponentContainer>
     </Container>
   );
