@@ -1,6 +1,6 @@
 import React from 'react';
-import NavBar from './Components/NavBar';
-import Slider from './Components/Slider';
+import NavBar from './component/NavBar';
+import Slider from './component/Slider';
 
 
 function App() {
