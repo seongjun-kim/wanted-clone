@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
-import Styled from 'styled-components'
-import colors from '../lib/colors'
+import React, { useState } from "react";
+import Styled from "styled-components";
+import colors from "../lib/colors";
 
 const Container = Styled.div`
     display: flex;
@@ -8,7 +8,7 @@ const Container = Styled.div`
     align-items: center;
     height: 80%;
     background-color: ${colors.background}
-`
+`;
 const ModalButton = Styled.button`
     width: 120px;
     height: 50px;
@@ -16,19 +16,19 @@ const ModalButton = Styled.button`
     border-radius: 25px;
     color: ${colors.white};
     font-weight: bold;
-`
+`;
 const ModalWrapper = Styled.div`
-    display: ${(props) => (props.visible ? 'block' : 'none')};
+    display: ${(props) => (props.visible ? "block" : "none")};
     position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
     z-index: 2;
-`
+`;
 
 const ModalOverlay = Styled.div`
-    display: ${(props) => (props.visible ? 'block' : 'none')};
+    display: ${(props) => (props.visible ? "block" : "none")};
     background-color: ${colors.transparent};
     position: fixed;
     top: 0;
@@ -36,7 +36,7 @@ const ModalOverlay = Styled.div`
     left: 0;
     right: 0;
     z-index: 1;
-`
+`;
 
 const ModalContent = Styled.div`
     display: flex;
@@ -51,44 +51,41 @@ const ModalContent = Styled.div`
     transform: translateY(-50%);
     margin: 0 auto;
     padding: 50px 15px;
-`
+`;
 const CloseButton = Styled.button`
     position: absolute;
     top: 5px;
     font-weight: bold;
-`
+`;
 
 const Modal = ({ children }) => {
     const [isVisible, setIsVisible] = useState(false);
     const handleOpen = () => {
         setIsVisible(!isVisible);
-    }
+    };
 
     const onMaskClick = (e) => {
         if (e.target === e.currentTarget) {
-            setIsVisible(false)
+            setIsVisible(false);
         }
-    }
+    };
 
     const handleClose = (e) => {
-        setIsVisible(false)
-    }
+        setIsVisible(false);
+    };
 
     return (
         <Container>
             <ModalButton onClick={handleOpen}>Open Modal</ModalButton>
             <ModalOverlay visible={isVisible} />
-            <ModalWrapper
-                onClick={onMaskClick}
-                visible={isVisible}
-            >
+            <ModalWrapper onClick={onMaskClick} visible={isVisible}>
                 <ModalContent>
                     {<CloseButton onClick={handleClose}>𝗫</CloseButton>}
                     {children}
                 </ModalContent>
             </ModalWrapper>
         </Container>
-    )
-}
+    );
+};
 
-export default Modal
+export default Modal;
