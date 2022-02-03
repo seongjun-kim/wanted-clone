@@ -2,8 +2,9 @@ import React from 'react';
 import Styled from 'styled-components';
 import NavBar from './component/NavBar';
 import Slider from './component/Slider';
-import Tab from './component/Tab';
 import colors from './lib/colors';
+import Tab from './component/Tab';
+import ClickToEdit from './component/ClickToEdit';
 
 const Container = Styled.div`
   height: 100vh;
@@ -32,6 +33,10 @@ function App() {
       <ComponentContainer>
         <Label>Tab</Label>
         <Tab />
+      </ComponentContainer>
+      <ComponentContainer>
+        <Label>ClickToEdit</Label>
+        <ClickToEdit />
       </ComponentContainer>
     </Container>
   );
