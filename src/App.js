@@ -9,12 +9,30 @@ const Container = Styled.div`
   height: 100vh;
   background-color: ${colors.white};
 `
+const ComponentContainer = Styled.div`
+  display: flex;
+  flex-direction: row;
+  height: 200px;
+  padding: 10px;
+`
+const Label = Styled.text`
+  display: flex;
+  justifiy-content: center;
+  align-items: center;
+  font-weight: bold;
+  padding: 10px;
+  border: medium dashed ${colors.gray};
+  margin-right: 10px;
+`
 function App() {
   return (
     <Container>
       {/* <NavBar />
       <Slider /> */}
-      <Tab />
+      <ComponentContainer>
+        <Label>Tab</Label>
+        <Tab />
+      </ComponentContainer>
     </Container>
   );
 }

@@ -5,8 +5,7 @@ import colors from '../lib/colors';
 const NUM_OF_TABS = 3;
 
 const Container = Styled.div`
-    flex-direction: row;
-    height: 200px;
+    width: 100%;
     background-color: ${colors.white};
 `
 const TabBar = Styled.div`
