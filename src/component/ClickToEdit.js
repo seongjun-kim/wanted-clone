@@ -8,7 +8,7 @@ const Container = Styled.div`
     align-items: center;
     justify-content: center;
     width: 100%;
-    background-color: ${colors.gray};
+    background-color: ${colors.background};
 `
 
 const Label = Styled.label`

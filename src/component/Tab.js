@@ -6,7 +6,7 @@ const NUM_OF_TABS = 3;
 
 const Container = Styled.div`
     width: 100%;
-    background-color: ${colors.white};
+    background-color: ${colors.background};
 `
 const TabBar = Styled.div`
     display: flex;
@@ -36,7 +36,6 @@ const Content = Styled.div`
     align-items: center;
     height: 100px;
     margin: 20px 0px;
-    background-color: ${colors.gray};
     color: gray;
     font-weight: bold;
     text-align: center;
