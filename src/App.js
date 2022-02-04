@@ -8,6 +8,7 @@ import ClickToEdit from "./component/ClickToEdit";
 import Toggle from "./component/Toggle";
 import Modal from "./component/Modal";
 import Tag from "./component/Tag";
+import AutoComplete from "./component/AutoComplete";
 
 const RootContainer = Styled.div`
   background-color: ${colors.white};
@@ -135,6 +136,9 @@ function App() {
       </ComponentContainer>
       <ComponentContainer labelText="Tag">
         <Tag tags={tags} handleAdd={addTag} handleRemove={removeTag} />
+      </ComponentContainer>
+      <ComponentContainer labelText="AutoComplete">
+        <AutoComplete />
       </ComponentContainer>
     </RootContainer>
   );
