@@ -1,11 +1,5 @@
 # Getting Started with Create React App
 
-[DEMO PAGE deployed by Netlify](https://61e7e21c36ad21b42219069e--silly-cray-d5cc0c.netlify.app/)
-
-https://user-images.githubusercontent.com/17680551/150107961-95011706-471b-4277-b167-d3306a8bf800.mov
-
-
-
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
