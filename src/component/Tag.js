@@ -10,6 +10,7 @@ const InputContainer = Styled.div`
   border: 1px solid ${(props) => (props.active ? colors.primary : colors.gray)};
   border-radius: 5px;
   padding: 10px;
+  background-color: ${colors.white};
 `;
 
 const Input = Styled.input`
