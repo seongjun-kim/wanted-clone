@@ -102,9 +102,7 @@ const AutoComplete = () => {
       return;
     }
     setSuggestions(
-      savedKeywords.filter(
-        (keyword) => keyword.toLowerCase().includes(text) && keyword
-      )
+      savedKeywords.filter((keyword) => keyword.toLowerCase().includes(text))
     );
   };
   const handleReset = () => {
