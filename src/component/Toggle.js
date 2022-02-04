@@ -1,16 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import Styled from "styled-components";
 import colors from "../lib/colors";
 
-const Container = Styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    height: 80%;
-    background-color: ${colors.background};
-`;
 const ToggleBox = Styled.button`
+    display: block;    
     height: 50px;
     width: 100px;
     margin: 20px;
@@ -30,20 +23,11 @@ const ToggleButton = Styled.div`
     transition: all 0.3s ease-in-out;
 `;
 
-const Toggle = () => {
-  const [isActive, setIsActive] = useState(false);
-
-  const handleClick = () => {
-    setIsActive(!isActive);
-  };
-
+const Toggle = ({ isActive, handleClick }) => {
   return (
-    <Container>
-      <ToggleBox status={isActive} onClick={handleClick}>
-        <ToggleButton status={isActive} />
-      </ToggleBox>
-      Toggle Switch {isActive ? "ON" : "OFF"}
-    </Container>
+    <ToggleBox status={isActive} onClick={handleClick}>
+      <ToggleButton status={isActive} />
+    </ToggleBox>
   );
 };
 

@@ -2,13 +2,6 @@ import React, { useState } from "react";
 import Styled from "styled-components";
 import colors from "../lib/colors";
 
-const Container = Styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 80%;
-    background-color: ${colors.background}
-`;
 const ModalButton = Styled.button`
     width: 120px;
     height: 50px;
@@ -75,7 +68,7 @@ const Modal = ({ children }) => {
   };
 
   return (
-    <Container>
+    <>
       <ModalButton onClick={handleOpen}>Open Modal</ModalButton>
       <ModalOverlay visible={isVisible} />
       <ModalWrapper onClick={onMaskClick} visible={isVisible}>
@@ -84,7 +77,7 @@ const Modal = ({ children }) => {
           {children}
         </ModalContent>
       </ModalWrapper>
-    </Container>
+    </>
   );
 };
 

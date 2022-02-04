@@ -2,14 +2,6 @@ import React, { useState } from "react";
 import Styled from "styled-components";
 import colors from "../lib/colors";
 
-const Container = Styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 80%;
-    background-color: ${colors.background};
-`;
-
 const InputContainer = Styled.div`
   display: flex;
   width: 300px;
@@ -23,7 +15,6 @@ const InputContainer = Styled.div`
 const Input = Styled.input`
   border: none;
   background-color: transparent;
-  // background-color:yellow;
 `;
 
 const ChipContainer = Styled.div`
@@ -62,38 +53,33 @@ const TagChip = ({ text, onRemove }) => {
   );
 };
 
-const Tag = () => {
+const Tag = ({ tags, handleAdd, handleRemove }) => {
   const [isFocused, setIsFocused] = useState(false);
   const [inputText, setInputText] = useState("");
-  const [tags, setTags] = useState([]);
-
   const handleChange = (e) => {
     setInputText(e.target.value);
   };
-  const handleRemove = (index) => {
-    tags.splice(index, 1);
-    setTags([...tags]);
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      handleAdd(inputText);
+      setInputText("");
+    }
   };
-  const addTag = () => {
-    setTags([...tags, inputText]);
-    setInputText("");
-  };
+
   return (
-    <Container>
-      <InputContainer active={isFocused}>
-        {tags.map((tag, index) => (
-          <TagChip text={tag} onRemove={() => handleRemove(index)} />
-        ))}
-        <Input
-          value={inputText}
-          placeholder="Press enter to add tags"
-          onFocus={() => setIsFocused(true)}
-          onBlur={() => setIsFocused(false)}
-          onChange={handleChange}
-          onKeyPress={(e) => e.key === "Enter" && addTag()}
-        />
-      </InputContainer>
-    </Container>
+    <InputContainer active={isFocused}>
+      {tags.map((tag, index) => (
+        <TagChip text={tag} onRemove={() => handleRemove(index)} />
+      ))}
+      <Input
+        value={inputText}
+        placeholder="Press enter to add tags"
+        onFocus={() => setIsFocused(true)}
+        onBlur={() => setIsFocused(false)}
+        onChange={handleChange}
+        onKeyPress={handleKeyPress}
+      />
+    </InputContainer>
   );
 };
 
