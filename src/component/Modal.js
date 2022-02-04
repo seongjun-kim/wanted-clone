@@ -59,33 +59,33 @@ const CloseButton = Styled.button`
 `;
 
 const Modal = ({ children }) => {
-    const [isVisible, setIsVisible] = useState(false);
-    const handleOpen = () => {
-        setIsVisible(!isVisible);
-    };
+  const [isVisible, setIsVisible] = useState(false);
+  const handleOpen = () => {
+    setIsVisible(!isVisible);
+  };
 
-    const onMaskClick = (e) => {
-        if (e.target === e.currentTarget) {
-            setIsVisible(false);
-        }
-    };
+  const onMaskClick = (e) => {
+    if (e.target === e.currentTarget) {
+      setIsVisible(false);
+    }
+  };
 
-    const handleClose = (e) => {
-        setIsVisible(false);
-    };
+  const handleClose = (e) => {
+    setIsVisible(false);
+  };
 
-    return (
-        <Container>
-            <ModalButton onClick={handleOpen}>Open Modal</ModalButton>
-            <ModalOverlay visible={isVisible} />
-            <ModalWrapper onClick={onMaskClick} visible={isVisible}>
-                <ModalContent>
-                    {<CloseButton onClick={handleClose}>𝗫</CloseButton>}
-                    {children}
-                </ModalContent>
-            </ModalWrapper>
-        </Container>
-    );
+  return (
+    <Container>
+      <ModalButton onClick={handleOpen}>Open Modal</ModalButton>
+      <ModalOverlay visible={isVisible} />
+      <ModalWrapper onClick={onMaskClick} visible={isVisible}>
+        <ModalContent>
+          {<CloseButton onClick={handleClose}>𝗫</CloseButton>}
+          {children}
+        </ModalContent>
+      </ModalWrapper>
+    </Container>
+  );
 };
 
 export default Modal;
