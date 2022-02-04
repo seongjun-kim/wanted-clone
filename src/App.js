@@ -27,6 +27,7 @@ const Label = Styled.text`
 const ComponentContainer = ({ labelText, children }) => {
   const Container = Styled.div`
     display: flex;
+    position: relative;
     align-items: center;
     justify-content: center;
     flex-direction: column;

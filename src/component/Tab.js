@@ -6,17 +6,16 @@ const NUM_OF_TABS = 3;
 
 const TabBar = Styled.div`
     display: flex;
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
     justify-content: space-between;
-    margin: 0;
-    padding: 0;
-    border: 0;
     width: 100%;
     height: 80px;
     background-color: ${colors.gray};
     padding-left: 20px;
 `;
 const TabBox = Styled.button`
-    display:flex;    
     justify-content: center;
     align-items: center;
     width: ${100 / NUM_OF_TABS}%;
