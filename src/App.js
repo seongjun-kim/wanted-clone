@@ -3,7 +3,7 @@ import Styled from "styled-components";
 // import NavBar from "./component/NavBar";
 // import Slider from "./component/Slider";
 import colors from "./lib/colors";
-import Tab from "./component/Tab";
+import Tab, { TAB_CONTENTS } from "./component/Tab";
 import ClickToEdit from "./component/ClickToEdit";
 import Toggle from "./component/Toggle";
 import Modal from "./component/Modal";
@@ -64,16 +64,7 @@ function App() {
 
   const getDisplayText = () => {
     const displayText = "Tab menu ";
-    switch (selectedTabIndex) {
-      case 0:
-        return displayText + "ONE";
-      case 1:
-        return displayText + "TWO";
-      case 2:
-        return displayText + "THREE";
-      default:
-        return displayText + "UNKNOWN";
-    }
+    return displayText + TAB_CONTENTS[selectedTabIndex];
   };
 
   // ClickToEdit

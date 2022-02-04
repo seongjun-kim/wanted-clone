@@ -2,7 +2,8 @@ import React from "react";
 import Styled from "styled-components";
 import colors from "../lib/colors";
 
-const NUM_OF_TABS = 3;
+const TAB_PAGES = [1, 2, 3];
+export const TAB_CONTENTS = ["ONE", "TWO", "THREE"];
 
 const TabBar = Styled.div`
     display: flex;
@@ -18,7 +19,7 @@ const TabBar = Styled.div`
 const TabBox = Styled.button`
     justify-content: center;
     align-items: center;
-    width: ${100 / NUM_OF_TABS}%;
+    width: ${100 / TAB_PAGES.length}%;
     height: 100%;
     background-color: ${(props) =>
       props.selected ? colors.primary : colors.gray};
@@ -31,15 +32,16 @@ const TabBox = Styled.button`
 const Tab = ({ selectedIndex, handleClick }) => {
   return (
     <TabBar>
-      <TabBox selected={selectedIndex === 0} onClick={() => handleClick(0)}>
-        Tab1
-      </TabBox>
-      <TabBox selected={selectedIndex === 1} onClick={() => handleClick(1)}>
-        Tab2
-      </TabBox>
-      <TabBox selected={selectedIndex === 2} onClick={() => handleClick(2)}>
-        Tab3
-      </TabBox>
+      {TAB_PAGES.map((tab, index) => {
+        return (
+          <TabBox
+            selected={selectedIndex === index}
+            onClick={() => handleClick(index)}
+          >
+            Tab{tab}
+          </TabBox>
+        );
+      })}
     </TabBar>
   );
 };
