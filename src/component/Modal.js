@@ -19,7 +19,7 @@ const ModalButton = Styled.button`
 `;
 const ModalWrapper = Styled.div`
     display: ${(props) => (props.visible ? "block" : "none")};
-    position: absolute;
+    position: fixed;
     top: 0;
     bottom: 0;
     left: 0;
