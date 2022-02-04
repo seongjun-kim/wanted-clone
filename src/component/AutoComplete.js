@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import Styled from "styled-components";
 import colors from "../lib/colors";
 
@@ -67,27 +67,15 @@ const SuggestionItemText = Styled.div`
 
 const SuggestionItem = ({ text, handleClick }) => {
   return (
-    <SuggestionItemContainer
-      onClick={() => {
-        console.log("onCLick");
-        handleClick();
-      }}
-    >
+    <SuggestionItemContainer onClick={handleClick}>
       <SuggestionItemText>{text}</SuggestionItemText>
     </SuggestionItemContainer>
   );
 };
 
-const AutoComplete = () => {
+const AutoComplete = ({ keywords, handleSave }) => {
   const [isFocused, setIsFocused] = useState(false);
   const [inputText, setInputText] = useState("");
-  const [savedKeywords, setSavedKeywords] = useState([
-    "antique",
-    "refurbished",
-    "vintage",
-    "중고A급",
-    "rustic",
-  ]);
   const [suggestions, setSuggestions] = useState([]);
 
   const handleInputChange = (e) => {
@@ -96,35 +84,41 @@ const AutoComplete = () => {
     getSuggestions(currentText);
   };
 
-  const getSuggestions = (text) => {
-    if (text.length === 0) {
-      setSuggestions([]);
-      return;
-    }
-    setSuggestions(
-      savedKeywords.filter((keyword) => keyword.toLowerCase().includes(text))
-    );
-  };
+  const getSuggestions = useCallback(
+    (text) => {
+      if (text.length === 0) {
+        setSuggestions([]);
+        return;
+      }
+      setSuggestions(
+        keywords.filter((keyword) => keyword.toLowerCase().includes(text))
+      );
+    },
+    [keywords]
+  );
+
   const handleReset = () => {
     setInputText("");
   };
+
   const saveKeyword = (text) => {
-    if (!savedKeywords.includes(text))
-      setSavedKeywords([text, ...savedKeywords]);
+    if (!keywords.includes(text)) handleSave([text, ...keywords]);
   };
+
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
       saveKeyword(inputText);
       handleReset();
     }
   };
+
   const handleClickSuggestion = (text) => {
     setInputText(text);
   };
 
   useEffect(() => {
     getSuggestions(inputText);
-  }, [inputText]);
+  }, [inputText, getSuggestions]);
 
   return (
     <Container>

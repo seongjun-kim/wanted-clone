@@ -108,6 +108,15 @@ function App() {
     setTags([...tags, text]);
   };
 
+  // AutoComplete
+  const [savedKeywords, setSavedKeywords] = useState([
+    "antique",
+    "refurbished",
+    "vintage",
+    "중고A급",
+    "rustic",
+  ]);
+
   return (
     <RootContainer>
       {/* <NavBar />
@@ -137,7 +146,7 @@ function App() {
         <Tag tags={tags} handleAdd={addTag} handleRemove={removeTag} />
       </ComponentContainer>
       <ComponentContainer labelText="AutoComplete">
-        <AutoComplete />
+        <AutoComplete keywords={savedKeywords} handleSave={setSavedKeywords} />
       </ComponentContainer>
     </RootContainer>
   );
