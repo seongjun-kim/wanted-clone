@@ -25,28 +25,27 @@ const Label = Styled.text`
   margin-bottom: 10px;
 `;
 
+const ContentContainer = Styled.div`
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 250px;
+  padding: 10px;
+  background-color: ${colors.background};
+  margin-bottom: 20px;
+`;
 const ComponentContainer = ({ labelText, children }) => {
-  const Container = Styled.div`
-    display: flex;
-    position: relative;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    height: 250px;
-    padding: 10px;
-    background-color: ${colors.background};
-    margin-bottom: 20px;
-  `;
-
   return (
     <>
       <Label>{labelText}</Label>
-      <Container>{children}</Container>
+      <ContentContainer>{children}</ContentContainer>
     </>
   );
 };
 
-const Content = Styled.div`
+const SubContent = Styled.div`
     display:flex;    
     justify-content: center;
     align-items: center;
@@ -115,21 +114,21 @@ function App() {
       <Slider /> */}
       <ComponentContainer labelText="Tab">
         <Tab selectedIndex={selectedTabIndex} handleClick={handleTabClick} />
-        <Content>{getDisplayText()}</Content>
+        <SubContent>{getDisplayText()}</SubContent>
       </ComponentContainer>
       <ComponentContainer labelText="ClickToEdit">
         <ClickToEdit
           inputs={clickToEditInputs}
           handleChange={handleClickToEditInputsChange}
         />
-        <Content>
+        <SubContent>
           {`이름 ${clickToEditInputs.name || "?"} 
           나이 ${clickToEditInputs.age || "?"}`}
-        </Content>
+        </SubContent>
       </ComponentContainer>
       <ComponentContainer labelText="Toggle">
         <Toggle isActive={isToggleActive} handleClick={handleToggleClick} />
-        <Content>Toggle Switch {isToggleActive ? "ON" : "OFF"}</Content>
+        <SubContent>Toggle Switch {isToggleActive ? "ON" : "OFF"}</SubContent>
       </ComponentContainer>
       <ComponentContainer labelText="Modal">
         <Modal>HELLO CODESTATES!</Modal>
