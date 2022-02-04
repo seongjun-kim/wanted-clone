@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Styled from "styled-components";
 import colors from "../lib/colors";
 
@@ -90,22 +90,25 @@ const AutoComplete = () => {
   ]);
   const [suggestions, setSuggestions] = useState([]);
 
-  const handleChange = (e) => {
+  const handleInputChange = (e) => {
     const currentText = e.target.value;
     setInputText(currentText);
-    if (currentText.length === 0) {
+    getSuggestions(currentText);
+  };
+
+  const getSuggestions = (text) => {
+    if (text.length === 0) {
       setSuggestions([]);
       return;
     }
     setSuggestions(
       savedKeywords.filter(
-        (keyword) => keyword.toLowerCase().includes(currentText) && keyword
+        (keyword) => keyword.toLowerCase().includes(text) && keyword
       )
     );
   };
   const handleReset = () => {
     setInputText("");
-    setSuggestions([]);
   };
   const saveKeyword = (text) => {
     if (!savedKeywords.includes(text))
@@ -119,15 +122,18 @@ const AutoComplete = () => {
   };
   const handleClickSuggestion = (text) => {
     setInputText(text);
-    setSuggestions([]);
   };
+
+  useEffect(() => {
+    getSuggestions(inputText);
+  }, [inputText]);
 
   return (
     <Container>
       <InputContainer isFocused={isFocused} hasSuggestions={suggestions.length}>
         <Input
           value={inputText}
-          onChange={handleChange}
+          onChange={handleInputChange}
           placeholder="Press enter to save keywords"
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
