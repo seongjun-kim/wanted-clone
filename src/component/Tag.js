@@ -14,8 +14,9 @@ const InputContainer = Styled.div`
 `;
 
 const Input = Styled.input`
-  border: none;
   background-color: transparent;
+  border: none;
+  outline: none;
 `;
 
 const ChipContainer = Styled.div`
@@ -37,9 +38,14 @@ const ChipText = Styled.text`
     text-overflow: ellipsis;
 `;
 const RemoveButton = Styled.button`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
     font-size: 5px;
     width: 15px;
     height: 15px;
+    line-height: 15px;
     border-radius: 50%;
     margin-left: 5px;
     color: ${colors.primary};

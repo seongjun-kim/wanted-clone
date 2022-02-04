@@ -24,13 +24,15 @@ const InputContainer = Styled.div`
 const Input = Styled.input`
   width: 100%;
   height: 100%;
-  border: 0;
+  border: none;
+  outline: none;
 `;
 
 const ResetButton = Styled.button`
   font-size: 10px;
   padding: 3px;
   background-color: ${colors.white};
+  border: none;
 `;
 
 const SuggetionListContainer = Styled.div`
@@ -54,9 +56,11 @@ const SuggestionItemContainer = Styled.button`
     height: 20px;
     text-align: start;
     padding: 4px 8px;
+    background-color: ${colors.white};
     :hover{
       background-color: ${colors.gray};
     }
+    border: none;
 `;
 
 const SuggestionItemText = Styled.div`

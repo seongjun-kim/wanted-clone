@@ -9,7 +9,9 @@ const ModalButton = Styled.button`
     border-radius: 25px;
     color: ${colors.white};
     font-weight: bold;
+    border: none;
 `;
+
 const ModalWrapper = Styled.div`
     display: ${(props) => (props.visible ? "block" : "none")};
     position: fixed;
@@ -49,6 +51,8 @@ const CloseButton = Styled.button`
     position: absolute;
     top: 5px;
     font-weight: bold;
+    border: none;
+    background-color: ${colors.white};
 `;
 
 const Modal = ({ children }) => {

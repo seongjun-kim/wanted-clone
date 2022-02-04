@@ -27,6 +27,7 @@ const TabBox = Styled.button`
     font-weight: bold;
     text-align: center;
     transition: background 0.1s linear;
+    border: none;
 `;
 
 const Tab = ({ selectedIndex, handleClick }) => {

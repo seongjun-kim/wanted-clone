@@ -11,9 +11,9 @@ const ToggleBox = Styled.button`
       props.status ? colors.primary : colors.gray};
     transition: all 0.3s ease-in-out;
     border-radius: 25px;
+    border: none;
 `;
 const ToggleButton = Styled.div`
-    margin: 5px;
     height: 40px;
     width: 40px;
     background-color: ${colors.white};
