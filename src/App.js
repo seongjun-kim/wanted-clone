@@ -82,14 +82,6 @@ function App() {
     age: "20",
   });
 
-  const handleClickToEditInputsChange = (e) => {
-    const { name, value } = e.target;
-    setClickToEditInputs({
-      ...clickToEditInputs,
-      [name]: value,
-    });
-  };
-
   // Toggle
   const [isToggleActive, setIsToggleActive] = useState(false);
   const handleToggleClick = () => {
@@ -127,8 +119,8 @@ function App() {
       </ComponentContainer>
       <ComponentContainer labelText="ClickToEdit">
         <ClickToEdit
-          inputs={clickToEditInputs}
-          handleChange={handleClickToEditInputsChange}
+          data={clickToEditInputs}
+          handleClickOutside={setClickToEditInputs}
         />
         <SubContent>
           {`이름 ${clickToEditInputs.name || "?"} 
