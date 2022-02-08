@@ -36,6 +36,7 @@ const Tab = ({ selectedIndex, handleClick }) => {
       {TAB_PAGES.map((tab, index) => {
         return (
           <TabBox
+            key={index.toString()}
             selected={selectedIndex === index}
             onClick={() => handleClick(index)}
           >
