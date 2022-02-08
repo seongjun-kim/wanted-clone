@@ -6,6 +6,7 @@ const Container = Styled.div`
   position: relative;
   width: 100%;
 `;
+
 const InputContainer = Styled.div`
   display: flex;
   box-sizing: border-box;
@@ -36,9 +37,10 @@ const ResetButton = Styled.button`
 `;
 
 const SuggetionListContainer = Styled.div`
+  display: ${(props) => (props.isVisible ? "flex" : "none")};
   box-sizing: border-box;
   position: absolute;
-  top: 30;
+  top: 50px;
   flex-direction: column;
   background-color: ${colors.white};
   width: 100%;
@@ -46,21 +48,21 @@ const SuggetionListContainer = Styled.div`
   overflow: scroll;
   border-radius: 0 0 10px  10px;
   border: 0 solid ${colors.gray};
-  border-width: 0 1px 0 1px;
+  border-width: 0 1px;
   padding: 8px 0;
   box-shadow: 0 4px 4px ${colors.gray};
 `;
 
 const SuggestionItemContainer = Styled.button`
-    width: 100%;
-    height: 20px;
-    text-align: start;
-    padding: 4px 8px;
-    background-color: ${colors.white};
-    :hover{
-      background-color: ${colors.gray};
-    }
-    border: none;
+  width: 100%;
+  height: 20px;
+  text-align: start;
+  padding: 4px 8px;
+  background-color: ${colors.white};
+  :hover{
+    background-color: ${colors.gray};
+  }
+  border: none;
 `;
 
 const SuggestionItemText = Styled.div`
@@ -69,9 +71,9 @@ const SuggestionItemText = Styled.div`
   white-space: nowrap;
 `;
 
-const SuggestionItem = ({ text, handleClick }) => {
+const SuggestionItem = ({ text, handleClick, ...rest }) => {
   return (
-    <SuggestionItemContainer onClick={handleClick}>
+    <SuggestionItemContainer onClick={handleClick} {...rest}>
       <SuggestionItemText>{text}</SuggestionItemText>
     </SuggestionItemContainer>
   );
@@ -95,7 +97,9 @@ const AutoComplete = ({ keywords, handleSave }) => {
         return;
       }
       setSuggestions(
-        keywords.filter((keyword) => keyword.toLowerCase().includes(text))
+        keywords.filter((keyword) =>
+          keyword.toLowerCase().includes(text.toLowerCase())
+        )
       );
     },
     [keywords]
@@ -120,35 +124,40 @@ const AutoComplete = ({ keywords, handleSave }) => {
     setInputText(text);
   };
 
+  const clearSuggetsions = () => {
+    setSuggestions([]);
+  };
+
   useEffect(() => {
     getSuggestions(inputText);
   }, [inputText, getSuggestions]);
 
   return (
-    <Container>
+    <Container onBlur={() => clearSuggetsions()}>
       <InputContainer isFocused={isFocused} hasSuggestions={suggestions.length}>
         <Input
           value={inputText}
           onChange={handleInputChange}
           placeholder="Press enter to save keywords"
           onFocus={() => setIsFocused(true)}
+          onClick={() => getSuggestions(inputText)}
           onBlur={() => setIsFocused(false)}
           onKeyPress={handleKeyPress}
         />
         <ResetButton onClick={handleReset}>𝗫</ResetButton>
       </InputContainer>
-      {suggestions.length > 0 && (
-        <SuggetionListContainer>
-          {suggestions.map((keyword) => {
-            return (
-              <SuggestionItem
-                text={keyword}
-                handleClick={() => handleClickSuggestion(keyword)}
-              />
-            );
-          })}
-        </SuggetionListContainer>
-      )}
+      <SuggetionListContainer isVisible={suggestions.length > 0}>
+        {suggestions.map((keyword, index) => {
+          return (
+            <SuggestionItem
+              key={index.toString()}
+              text={keyword}
+              onMouseDown={(e) => e.preventDefault()}
+              handleClick={() => handleClickSuggestion(keyword)}
+            />
+          );
+        })}
+      </SuggetionListContainer>
     </Container>
   );
 };
