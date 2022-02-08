@@ -1,70 +1,84 @@
-# Getting Started with Create React App
+# 원티드-프리온보딩코스-선발과제
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## 결과물 확인
 
-In the project directory, you can run:
+[![Netlify Status](https://api.netlify.com/api/v1/badges/f500616b-67ef-4e18-9ff3-2181af7b31a6/deploy-status)](https://wanted-pre-on-boarding.netlify.app/)
 
-### `npm start`
+## 실행 방법
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. 레포지토리 클론
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```
+$ git clone https://github.com/seongjun-kim/wanted_pre_onboarding.git
+```
 
-### `npm test`
+2. 패키지 설치
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+$ yarn install
+```
 
-### `npm run build`
+3. 실행
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+$ yarn start
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 구현 설명
 
-### `npm run eject`
+- 사용 권장 기술로 기재된 JavaScript를 활용한다.
+- 각 컴포넌트는 styled-components를 활용한 내부 컴포넌트들의 조합으로 구성한다.
+- 색상이나 데이터 등 추후 변경 가능성이 있는 요소들은 상수값으로 정의해 활용한다.
+- 각 컴포넌트의 동작을 위해 쓰이는 상태값의 활용 주체가 앱에 있다고 판단할 경우, prop으로 전달받아 활용한다. 컴포넌트의 동작만을 위한 상태인 경우, 컴포넌트 내부에서 정의해 활용한다.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```
+1. Toggle
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- on/off 상태를 isActive라는 prop으로 받아 상태로서 활용
+- 토글 상자를 눌렀을 때 동작하도록 ToggleBox 부분에 prop으로 받은 핸들러를 onClick으로 적용
+- CSS를 활용해 켜고 꺼지는 상황에서의 배경색 전환 및 이동 애니메이션 효과 적용
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```
+2. Modal
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- 모달을 여는 버튼 / 모달을 열었을 때 뒷 배경(오버레이) / 모달 창 부분으로 구성
+- 모달 표시 여부를 다루는 상태는 모달 컴포넌트 내부에서 다루고, 모달 박스 내부 요소만 children prop으로 받아 표시
+- 모달 창 부분은 오버레이와 마찬가지로 Wrapper로 감싸서 배경 화면 눌렀을 때도 화면이 닫히도록 구현
+```
 
-## Learn More
+```
+3. Tab
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- 컴포넌트 내부 최상단에 3개의 탭 페이지(TAB_PAGES)를 상수로 정의해 활용
+- 선택된 탭 인덱스의 상태와 핸들러는 앱에서 관리하고, prop으로 넘겨받아 활용
+- CSS를 활용해 탭 전환 시 배경화면 전환 애니메이션 적용
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+4. Tag
 
-### Code Splitting
+- 태그 정보들을 칩 컴포넌트로 표시하는 부분과 입력창 부분을 감싸는 형태로 구성
+- 입력창에서의 내용 입력 이후 'Enter' 키를 누르면 입력내용이 태그로 추가되도록 핸들러에서 'Enter' 키를 조건으로 기대동작 수행
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```
+5. AutoComplete
 
-### Analyzing the Bundle Size
+- 가이드 화면에 제시된 예시들을 샘플 데이터로 앱에서 정의해 기본값으로 활용
+- 입력어를 포함한 문자열이 추천 데이터에 있는지 대소문자 구분없이 데이터 필터링
+- 입력창에 내용 입력 이후 'Enter' 키를 누르면 해당 문자열도 추천 데이터로 추가
+- 추천 리스트 목록 순서는 최근 입력된 것 부터 표시
+- 추천 리스트에서의 아이템을 누르면 입력창 내용이 바뀌고 추천 목록은 유지 (가이드 준수)
+- 컴포넌트 바깥 영역을 누르면 추천 목록이 닫히도록 onBlur 핸들러 등록
+  - 추천 아이템을 누를 때 상위 컴포넌트의 onBlur가 불려서 아이템 클릭 이벤트(onClick)이 무시되는 이슈가 있었다. 아이템 컴포넌트의 onMouseDown에서 preventDefault()를 활용해 이벤트 버블링을 막았다. (ref: https://stackoverflow.com/a/67979700)
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```
+6. ClickToEdit
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- 처음에는 입력 변경 사항대로 표시되는 컴포넌트라고 판단했으나, 가이드 미리보기 화면대로 입력 후 바깥 영역을 눌렀을 때 수정사항이 반영되도록 수정했다.
+- 두 데이터를 data라는 prop에 묶어 전달받아 key name에 따라 활용함으로써 handleChange 부분에서 통합 관리할 수 있다.
+```
