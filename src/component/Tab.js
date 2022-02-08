@@ -23,7 +23,7 @@ const TabBox = Styled.button`
     height: 100%;
     background-color: ${(props) =>
       props.selected ? colors.primary : colors.gray};
-    color: white;
+    color: ${colors.white};
     font-weight: bold;
     text-align: center;
     transition: background 0.1s linear;
